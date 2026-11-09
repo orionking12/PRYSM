@@ -1,0 +1,16 @@
+[package]
+name = "prysm"
+version = "0.1.1"
+edition = "2021"
+authors = ["Jorge Humberto Davalos Gonzalez (ORION-VOX / VOX-114) <orionchinnar@gmail.com>"]
+description = "Parallel Git Worktrees for the AI Agent Era"
+readme = "README.md"
+license = "MIT"
+homepage = "https://www.orzworknetai.com"
+repository = "https://github.com/orionking12/PRYSM"
+
+[dependencies]
+clap = { version = "4.4", features = ["derive"] }
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+anyhow = "1.0"
