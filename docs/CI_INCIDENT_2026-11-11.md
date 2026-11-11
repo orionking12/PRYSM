@@ -21,5 +21,13 @@ There is **no evidence yet** that `cargo check` or `cargo test` ran. A pre-step 
 5. When the Actions service is available, re-run **failed jobs** and inspect step logs.
 6. If jobs begin running, collect `cargo check --locked --all-targets` and `cargo test --locked --all-targets` results and attach them to the release notes.
 
+
+## Repeat diagnostic (second attempt)
+- The failed jobs from run [43043656233](https://github.com/orionking12/PRYSM/actions/runs/43043656233) were re-run through GitHub.
+- Attempt 2 also completed with `failure` for both Ubuntu and Windows in around three seconds.
+- The jobs reported `runner_id=0`, empty `runner_name`, and `steps=[]`.
+- This strengthens the suspicion of a **pre-runner/provisioning/Actions configuration** problem, not a Rust test failure, but the precise cause remains unconfirmed without the GitHub UI message.
+- Local fallback scripts were added under `scripts/validate-release.ps1` and `scripts/validate-release.sh`. They have **not** yet been run on the author's machine and do not substitute for CI evidence.
+
 ## Publication gate
 **BLOCKED (CI environment / undiagnosed).** The new workflow is a proposed test configuration, not passed evidence. No merge or release is approved by this document.
