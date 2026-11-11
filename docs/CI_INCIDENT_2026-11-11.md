@@ -29,5 +29,13 @@ There is **no evidence yet** that `cargo check` or `cargo test` ran. A pre-step 
 - This strengthens the suspicion of a **pre-runner/provisioning/Actions configuration** problem, not a Rust test failure, but the precise cause remains unconfirmed without the GitHub UI message.
 - Local fallback scripts were added under `scripts/validate-release.ps1` and `scripts/validate-release.sh`. They have **not** yet been run on the author's machine and do not substitute for CI evidence.
 
+## Root cause confirmed by GitHub UI (2026-11-11)
+
+The repository owner's GitHub Actions screenshot displays the explicit annotation (Spanish): **"El trabajo no se ha iniciado porque su cuenta está bloqueada debido a un problema de facturación."**
+
+This accounts for the missing runners and zero executed job steps. It is a **GitHub account billing restriction**, not a verified Rust compile or test failure. The Ubuntu runner migration warning is informational and not the observed cause.
+
+To continue without paid GitHub Actions, use the proposed Python 3 standard-library script `scripts/prysm_verify.py`, described in `docs/LOCAL_VERIFIER.md`. The verifier's own 5 unit tests passed locally; PRYSM's actual Cargo checks must still run on a host with Rust installed. Do not misreport local evidence as a GitHub CI green result.
+
 ## Publication gate
-**BLOCKED (CI environment / undiagnosed).** The new workflow is a proposed test configuration, not passed evidence. No merge or release is approved by this document.
+**BLOCKED (GitHub Actions account billing restriction confirmed in UI).** The new workflow is a proposed test configuration, not passed evidence. No merge or release is approved by this document.
